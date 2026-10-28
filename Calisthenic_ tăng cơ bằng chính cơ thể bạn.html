@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calisthenic: tăng cơ bằng chính cơ thể bạn</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14121a;--y:#ffd400;--pk:#ff4f8b;--tl:#19c3a6;--bl:#4a6bff;--pp:#f6f3ee;--bar:#0d0c11;--fg:#f6f3ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--bar);color:var(--fg);font-family:'Be Vietnam Pro',system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.stage{width:min(100vw,calc((100vh - 84px)*16/9));aspect-ratio:16/9;position:relative;overflow:hidden;container-type:inline-size;background:var(--y);color:var(--ink)}
+.scene{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .25s}
+.scene.on{opacity:1;visibility:visible}
+.y{background:var(--y)}.pk{background:var(--pk)}.tl{background:var(--tl)}.bl{background:var(--bl);color:#fff}.pp{background:var(--pp)}.dk{background:var(--ink);color:var(--y)}
+.scene::before{content:"";position:absolute;inset:0;background:radial-gradient(rgba(20,18,26,.16) 22%,transparent 24%) 0 0/1.3cqw 1.3cqw;-webkit-mask:linear-gradient(100deg,transparent 40%,#000);mask:linear-gradient(100deg,transparent 40%,#000);pointer-events:none}
+.txt{position:absolute;left:5cqw;top:7cqw;width:48cqw}
+.tag{display:inline-block;background:var(--ink);color:var(--y);font-weight:800;font-size:1.7cqw;padding:.5cqw 1.4cqw;transform:rotate(-2deg);margin-bottom:2cqw}
+h1,h2{font-weight:900;line-height:.92;letter-spacing:-.035em}
+h1{font-size:10.5cqw}h2{font-size:8.6cqw}
+h3{font-size:2.7cqw;font-weight:800;line-height:1.2;margin-top:2.4cqw;max-width:40cqw}
+.hl{background:linear-gradient(transparent 52%,var(--hl,var(--pk)) 52%);padding:0 .6cqw}
+.y .hl{--hl:var(--pk)}.pk .hl{--hl:var(--y)}.tl .hl{--hl:var(--y)}.pp .hl{--hl:var(--y)}.bl .hl{--hl:var(--pk)}.dk .hl{--hl:var(--pk);color:#fff}
+.chips{display:flex;gap:1cqw;flex-wrap:wrap;margin-top:2.4cqw}
+.chip{background:var(--ink);color:#fff;font-weight:800;font-size:2.1cqw;padding:.7cqw 1.6cqw;border-radius:5cqw}
+.tip{position:absolute;left:5cqw;bottom:11cqw;background:#fff;color:var(--ink);border:.45cqw solid var(--ink);box-shadow:.7cqw .7cqw 0 var(--ink);padding:1.2cqw 1.8cqw;font-weight:800;font-size:2.1cqw;max-width:40cqw;transform:rotate(-1.5deg)}
+.fig{position:absolute;right:1cqw;bottom:6cqw;width:52cqw}
+.pop{opacity:0}
+.on .pop{animation:pop .55s cubic-bezier(.2,1.5,.4,1) both;animation-delay:var(--d,0s)}
+@keyframes pop{0%{opacity:0;transform:translateY(3cqw) scale(.85) rotate(-3deg)}100%{opacity:1;transform:none}}
+.steps{position:absolute;left:5cqw;right:5cqw;bottom:13cqw;display:flex;gap:2.4cqw}
+.card{flex:1;background:#fff;color:var(--ink);border:.45cqw solid var(--ink);box-shadow:.8cqw .8cqw 0 var(--ink);padding:1.6cqw;text-align:center}
+.card svg{width:100%;height:9cqw}
+.card b{display:block;font-size:2.7cqw;font-weight:900;line-height:1}
+.card span{font-size:1.7cqw;font-weight:500}
+.thick{transform-origin:center;animation:thick 1.6s ease-in-out infinite alternate}
+@keyframes thick{to{transform:scaleY(1.25)}}
+.stairs{position:absolute;right:5cqw;bottom:12cqw;width:46cqw;height:30cqw;display:flex;align-items:flex-end;gap:1cqw}
+.stair{flex:1;background:var(--pk);border:.45cqw solid var(--ink);display:flex;align-items:flex-end;justify-content:center;padding-bottom:1cqw;font-weight:900;font-size:1.9cqw;text-align:center;line-height:1.1;transform-origin:bottom;color:var(--ink)}
+.on .stair{animation:grow .6s cubic-bezier(.2,1.4,.4,1) both;animation-delay:var(--d)}
+@keyframes grow{from{transform:scaleY(0)}to{transform:none}}
+.plan{position:absolute;left:5cqw;right:5cqw;bottom:12cqw;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6cqw}
+.stat{background:var(--y);color:var(--ink);border:.4cqw solid #fff;padding:1.4cqw}
+.stat b{display:block;font-size:4.4cqw;font-weight:900;line-height:1}
+.stat span{font-size:1.7cqw;font-weight:800}
+.days{display:flex;gap:1.2cqw;margin-top:2.2cqw}
+.day{border:.35cqw solid var(--y);padding:.8cqw 1.6cqw;font-weight:800;font-size:2cqw;color:var(--y)}
+.day em{font-style:normal;color:#fff;margin-left:.6cqw}
+.sticker{position:absolute;right:6cqw;top:6cqw;width:13cqw;height:13cqw;border-radius:50%;background:var(--pk);border:.45cqw solid var(--ink);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;font-size:2cqw;line-height:1.05;transform:rotate(12deg);color:var(--ink)}
+.cap{position:absolute;left:0;right:0;bottom:0;background:rgba(13,12,17,.92);color:#fff;font-size:2cqw;font-weight:500;padding:1.4cqw 5cqw;min-height:5.6cqw;display:flex;align-items:center}
+.cap::before{content:"";width:1.2cqw;height:1.2cqw;background:var(--y);border-radius:50%;margin-right:1.4cqw;flex:none}
+.start{position:absolute;inset:0;z-index:5;background:var(--y);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2cqw;cursor:pointer;text-align:center}
+.start .play{width:11cqw;height:11cqw;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.start:hover .play{transform:scale(1.08)}
+.start .play::after{content:"";border-left:3.6cqw solid var(--y);border-top:2.2cqw solid transparent;border-bottom:2.2cqw solid transparent;margin-left:1cqw}
+.start p{font-weight:900;font-size:3.4cqw}
+.start small{font-size:1.8cqw;font-weight:500}
+.ctl{width:min(100vw,calc((100vh - 84px)*16/9));display:flex;align-items:center;gap:10px;padding:0 10px 10px}
+.ctl button{background:var(--y);color:var(--ink);border:0;font:800 14px 'Be Vietnam Pro',system-ui,sans-serif;padding:8px 14px;border-radius:20px;cursor:pointer;white-space:nowrap}
+.ctl button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.prog{flex:1;display:flex;gap:4px;height:12px}
+.seg{flex:1;background:#34313d;cursor:pointer;position:relative;overflow:hidden;border:0;padding:0}
+.seg i{position:absolute;inset:0;background:var(--pk);transform-origin:left;transform:scaleX(0)}
+@media(prefers-reduced-motion:reduce){.on .pop,.on .stair,.thick{animation:none;opacity:1}}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+<div class="start" id="start" role="button" tabindex="0">
+  <div class="play"></div>
+  <p>Calisthenic: tăng cơ bằng chính cơ thể bạn</p>
+  <small>Bấm để phát video (bật âm thanh để nghe giọng đọc)</small>
+</div>
+
+<section class="scene y" data-d="6" data-s="Không cần phòng gym, không cần tạ. Calisthenic xây cơ chỉ bằng trọng lượng cơ thể của bạn.">
+  <div class="txt">
+    <p class="tag pop">Giải thích nhanh</p>
+    <h1 class="pop" style="--d:.15s">CALI&shy;STHENIC</h1>
+    <h3 class="pop" style="--d:.45s">Tăng cơ chỉ với <span class="hl">trọng lượng cơ thể</span></h3>
+  </div>
+  <svg class="fig" data-k="pull" viewBox="-200 -260 400 280"></svg>
+</section>
+
+<section class="scene pk" data-d="8" data-s="Cơ lớn lên theo ba bước. Một, cơ bị căng. Hai, xuất hiện những tổn thương rất nhỏ. Ba, cơ hồi phục và dày lên để chịu được lần sau.">
+  <div class="txt" style="width:80cqw">
+    <p class="tag pop">Cơ chế</p>
+    <h2 class="pop" style="--d:.15s">Cơ lớn lên <span class="hl">thế nào?</span></h2>
+  </div>
+  <div class="steps">
+    <div class="card pop" style="--d:.7s"><svg viewBox="0 0 120 60"><path d="M4 30l12-8M4 30l12 8M116 30l-12-8M116 30l-12 8" stroke="#14121a" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="22" y="22" width="76" height="16" rx="8" fill="#ff4f8b" stroke="#14121a" stroke-width="4"/></svg><b>1. Căng cơ</b><span>Bài tập đủ nặng làm cơ phải gồng</span></div>
+    <div class="card pop" style="--d:1.6s"><svg viewBox="0 0 120 60"><rect x="12" y="22" width="96" height="16" rx="8" fill="#ff4f8b" stroke="#14121a" stroke-width="4"/><path d="M40 22l6 8-8 4 6 4M78 22l-6 8 8 4-6 4" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><b>2. Tổn thương nhỏ</b><span>Các sợi cơ bị “xước” rất nhẹ</span></div>
+    <div class="card pop" style="--d:2.5s"><svg viewBox="0 0 120 60"><rect class="thick" x="12" y="18" width="96" height="24" rx="12" fill="#19c3a6" stroke="#14121a" stroke-width="4"/></svg><b>3. Hồi phục</b><span>Ăn đủ, ngủ đủ: cơ dày hơn trước</span></div>
+  </div>
+</section>
+
+<section class="scene tl" data-d="7" data-s="Nhóm động tác đẩy. Hít đất làm việc cho ngực, vai và tay sau. Giữ thân người thẳng như một tấm ván.">
+  <div class="txt">
+    <p class="tag pop">Nhóm động tác 1</p>
+    <h2 class="pop" style="--d:.15s">ĐẨY</h2>
+    <h3 class="pop" style="--d:.4s">Hít đất, chống đẩy xà kép</h3>
+    <div class="chips"><span class="chip pop" style="--d:.7s">Ngực</span><span class="chip pop" style="--d:.85s">Vai</span><span class="chip pop" style="--d:1s">Tay sau</span></div>
+  </div>
+  <div class="tip pop" style="--d:1.3s">Thân thẳng như tấm ván, không võng lưng</div>
+  <svg class="fig" data-k="push" viewBox="-200 -260 400 280"></svg>
+</section>
+
+<section class="scene bl" data-d="7" data-s="Nhóm động tác kéo. Xà đơn tập cho lưng và tay trước. Hãy kéo khuỷu tay xuống, đừng giật người.">
+  <div class="txt">
+    <p class="tag pop" style="background:var(--y);color:var(--ink)">Nhóm động tác 2</p>
+    <h2 class="pop" style="--d:.15s">KÉO</h2>
+    <h3 class="pop" style="--d:.4s">Xà đơn, hít xà, kéo xà thấp</h3>
+    <div class="chips"><span class="chip pop" style="--d:.7s;background:var(--y);color:var(--ink)">Lưng xô</span><span class="chip pop" style="--d:.85s;background:var(--y);color:var(--ink)">Tay trước</span></div>
+  </div>
+  <div class="tip pop" style="--d:1.3s">Kéo khuỷu xuống, cằm vượt xà, không giật</div>
+  <svg class="fig" data-k="pull" viewBox="-200 -260 400 280"></svg>
+</section>
+
+<section class="scene pk" data-d="7" data-s="Đừng quên chân. Squat làm việc cho đùi và mông. Gót chân bám đất, gối đi theo hướng mũi chân.">
+  <div class="txt">
+    <p class="tag pop">Nhóm động tác 3</p>
+    <h2 class="pop" style="--d:.15s">CHÂN</h2>
+    <h3 class="pop" style="--d:.4s">Squat, lunge, bước lên bậc</h3>
+    <div class="chips"><span class="chip pop" style="--d:.7s">Đùi</span><span class="chip pop" style="--d:.85s">Mông</span></div>
+  </div>
+  <div class="tip pop" style="--d:1.3s">Gót bám đất, gối theo hướng mũi chân</div>
+  <svg class="fig" data-k="squat" viewBox="-200 -260 400 280"></svg>
+</section>
+
+<section class="scene pp" data-d="8" data-s="Bí quyết lớn nhất: tăng độ khó dần dần. Khi bạn làm dễ mười hai lần, hãy chuyển sang biến thể khó hơn. Đó gọi là quá tải tiến triển.">
+  <div class="txt">
+    <p class="tag pop">Bí quyết lớn nhất</p>
+    <h2 class="pop" style="--d:.15s">Phải <span class="hl">khó dần</span></h2>
+    <h3 class="pop" style="--d:.5s">Làm dễ 12 lần? Chuyển sang biến thể khó hơn.</h3>
+  </div>
+  <div class="stairs">
+    <div class="stair" style="--d:1s;height:25%;background:var(--tl)">Hít đất quỳ</div>
+    <div class="stair" style="--d:1.5s;height:48%;background:var(--y)">Hít đất chuẩn</div>
+    <div class="stair" style="--d:2s;height:73%;background:var(--pk)">Tay hẹp, chân cao</div>
+    <div class="stair" style="--d:2.5s;height:100%;background:var(--bl);color:#fff">Một tay</div>
+  </div>
+</section>
+
+<section class="scene dk" data-d="9" data-s="Một tuần mẫu: tập bốn buổi, mỗi bài ba đến bốn hiệp, tám đến mười hai lần, nghỉ sáu mươi đến chín mươi giây. Ăn đủ đạm và ngủ từ bảy đến chín tiếng.">
+  <div class="txt" style="width:90cqw">
+    <p class="tag pop" style="background:var(--y);color:var(--ink)">Tuần mẫu</p>
+    <h2 class="pop" style="--d:.15s">4 buổi, <span class="hl">đều đặn</span></h2>
+    <div class="days">
+      <span class="day pop" style="--d:.6s">T2<em>Đẩy</em></span><span class="day pop" style="--d:.75s">T3<em>Chân</em></span><span class="day pop" style="--d:.9s">T5<em>Kéo</em></span><span class="day pop" style="--d:1.05s">T7<em>Toàn thân</em></span>
+    </div>
+  </div>
+  <div class="plan">
+    <div class="stat pop" style="--d:1.6s"><b>3–4</b><span>hiệp mỗi bài</span></div>
+    <div class="stat pop" style="--d:2.2s"><b>8–12</b><span>lần mỗi hiệp</span></div>
+    <div class="stat pop" style="--d:2.8s"><b>60–90s</b><span>nghỉ giữa hiệp</span></div>
+    <div class="stat pop" style="--d:3.4s"><b>1,6–2,2g</b><span>đạm mỗi kg cân nặng</span></div>
+  </div>
+</section>
+
+<section class="scene y" data-d="6" data-s="Hãy nhớ: đều đặn thắng hoàn hảo. Bắt đầu ngay hôm nay với ba hiệp hít đất.">
+  <div class="txt" style="width:90cqw;top:12cqw">
+    <p class="tag pop">Tóm lại</p>
+    <h2 class="pop" style="--d:.15s">Đều đặn<br><span class="hl">thắng hoàn hảo.</span></h2>
+    <h3 class="pop" style="--d:.7s;max-width:60cqw">Bắt đầu hôm nay: 3 hiệp hít đất, mỗi hiệp sát sức một chút.</h3>
+  </div>
+  <div class="sticker pop" style="--d:1.2s">Đẩy<br>Kéo<br>Chân</div>
+</section>
+
+<div class="cap" id="cap"></div>
+</div>
+
+<div class="ctl">
+  <button id="pp" type="button">Tạm dừng</button>
+  <button id="rs" type="button">Phát lại</button>
+  <div class="prog" id="prog"></div>
+  <button id="vc" type="button">Giọng đọc: bật</button>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg',$=s=>[...document.querySelectorAll(s)];
+const sc=$('.scene'),D=sc.map(s=>+s.dataset.d),T=D.reduce((a,b)=>a+b,0);
+const ST=D.map((_,i)=>D.slice(0,i).reduce((a,b)=>a+b,0));
+const cap=document.getElementById('cap'),pp=document.getElementById('pp'),vc=document.getElementById('vc'),prog=document.getElementById('prog');
+let el=0,playing=false,cur=-1,last=0,voice=true;
+const INK='#14121a',SKIN='#ffb98a',SHIRT='#ff4f8b',PANT='#19c3a6';
+
+/* ---- cartoon figure ---- */
+const L=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];
+const P=a=>'M'+a.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join('L');
+function ik(a,b,l1,l2,s){const dx=b[0]-a[0],dy=b[1]-a[1],r=Math.hypot(dx,dy)||1,d=Math.min(r,l1+l2-.01),x=(l1*l1-l2*l2+d*d)/(2*d),h=Math.sqrt(Math.max(l1*l1-x*x,0)),ux=dx/r,uy=dy/r;return[a[0]+ux*x-uy*h*s,a[1]+uy*x+ux*h*s]}
+function pose(k,t){
+  const p=(1-Math.cos(t*2.4))/2;
+  if(k==='push'){const F=[-140,-8],h=85-55*p,S=[F[0]+Math.sqrt(190*190-(h-8)**2),-h],hip=L(F,S,.55),r=Math.hypot(S[0]-F[0],S[1]-F[1]),u=[(S[0]-F[0])/r,(S[1]-F[1])/r],hand=[48,-4];
+    return{leg:[hip,L(hip,F,.5),F],torso:[hip,S],arm:[S,ik(S,hand,44,44,1),hand],head:[S[0]+u[0]*32,S[1]+u[1]*32-8],foot:F}}
+  if(k==='pull'){const hand=[0,-215],S=[0,-130-62*p],hip=[S[0]+4,S[1]+70],knee=[hip[0]+16,hip[1]+42],foot=[hip[0]-14,hip[1]+80];
+    return{leg:[hip,knee,foot],torso:[hip,S],arm:[S,ik(S,hand,44,44,1),hand],head:[S[0]+2,S[1]-32],foot}}
+  const foot=[8,-6],hip=[-35*p,-146+72*p],S=[hip[0]+26*p,hip[1]-72+6*p],hand=[S[0]+70,S[1]+6-14*p];
+  return{leg:[hip,ik(hip,foot,71,71,-1),foot],torso:[hip,S],arm:[S,ik(S,hand,38,38,1),hand],head:[S[0]+10*p+4,S[1]-32],foot}
+}
+function mk(g,tag,at){const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);g.appendChild(e);return e}
+function build(svg){
+  const k=svg.dataset.k;
+  mk(svg,'ellipse',{cx:k==='pull'?0:-20,cy:2,rx:k==='pull'?60:150,ry:7,fill:'rgba(20,18,26,.25)'});
+  if(k==='pull'){mk(svg,'path',{d:'M-75 0V-215M75 0V-215',stroke:INK,'stroke-width':7,fill:'none'});mk(svg,'path',{d:'M-85 -215H85',stroke:INK,'stroke-width':10,'stroke-linecap':'round'})}
+  const g=mk(svg,'g',{'stroke-linecap':'round','stroke-linejoin':'round',fill:'none'}),o={};
+  const limb=(n,c,w)=>{o[n]=[mk(g,'path',{stroke:INK,'stroke-width':w+9}),mk(g,'path',{stroke:c,'stroke-width':w})]};
+  limb('leg',PANT,20);limb('torso',SHIRT,34);
+  o.foot=mk(g,'circle',{r:11,fill:INK});
+  o.head=mk(g,'circle',{r:22,fill:SKIN,stroke:INK,'stroke-width':5});
+  o.band=mk(g,'path',{stroke:'#ffd400','stroke-width':7});
+  o.eye=mk(g,'circle',{r:3.4,fill:INK});
+  limb('arm',SKIN,13);
+  svg._o=o;svg._k=k;
+}
+function draw(svg,t){
+  const o=svg._o,q=pose(svg._k,t),hd=q.head;
+  o.leg.forEach(e=>e.setAttribute('d',P(q.leg)));o.torso.forEach(e=>e.setAttribute('d',P(q.torso)));o.arm.forEach(e=>e.setAttribute('d',P(q.arm)));
+  o.foot.setAttribute('cx',q.foot[0]+(svg._k==='pull'?0:8));o.foot.setAttribute('cy',q.foot[1]);
+  o.head.setAttribute('cx',hd[0]);o.head.setAttribute('cy',hd[1]);
+  o.band.setAttribute('d','M'+(hd[0]-20)+' '+(hd[1]-6)+'L'+(hd[0]+20)+' '+(hd[1]-6));
+  o.eye.setAttribute('cx',hd[0]+9);o.eye.setAttribute('cy',hd[1]+3);
+}
+$('.fig').forEach(build);
+
+/* ---- timeline ---- */
+D.forEach((d,i)=>{const b=document.createElement('button');b.className='seg';b.type='button';b.setAttribute('aria-label','Cảnh '+(i+1));b.style.flex=d;b.innerHTML='<i></i>';b.onclick=()=>{el=ST[i];if(!playing)play()};prog.appendChild(b)});
+const fills=$('.seg i');
+function say(t){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();if(!voice||!playing)return;const u=new SpeechSynthesisUtterance(t);u.lang='vi-VN';u.rate=1.05;speechSynthesis.speak(u)}
+function play(){if(el>=T-.05)el=0;playing=true;pp.textContent='Tạm dừng';document.getElementById('start').style.display='none';cur=-1}
+function pause(){playing=false;pp.textContent='Tiếp tục';if('speechSynthesis' in window)speechSynthesis.cancel()}
+function show(){
+  let i=ST.findIndex((s,j)=>el>=s&&el<s+D[j]);if(i<0)i=sc.length-1;
+  if(i!==cur){cur=i;sc.forEach((s,j)=>{s.classList.toggle('on',j===i)});cap.textContent=sc[i].dataset.s;say(sc[i].dataset.s)}
+  const t=el-ST[i],f=sc[i].querySelector('.fig');if(f)draw(f,t);
+  fills.forEach((e,j)=>e.style.transform='scaleX('+(j<i?1:j>i?0:Math.min(t/D[j],1))+')');
+}
+function loop(n){const dt=Math.min((n-last)/1000,.1);last=n;
+  if(playing){el+=dt;if(el>=T){el=T-.001;playing=false;pp.textContent='Xem lại'}}
+  show();requestAnimationFrame(loop)}
+pp.onclick=()=>playing?pause():play();
+document.getElementById('rs').onclick=()=>{el=0;play()};
+vc.onclick=()=>{voice=!voice;vc.textContent='Giọng đọc: '+(voice?'bật':'tắt');if(!voice&&'speechSynthesis' in window)speechSynthesis.cancel();else if(playing)say(sc[cur].dataset.s)};
+const st=document.getElementById('start');st.onclick=()=>{el=0;play()};st.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el=0;play()}};
+document.addEventListener('keydown',e=>{if(e.code==='Space'&&e.target===document.body){e.preventDefault();playing?pause():play()}});
+pp.textContent='Phát';
+requestAnimationFrame(n=>{last=n;loop(n)});
+</script>
+</body>
+</html>
